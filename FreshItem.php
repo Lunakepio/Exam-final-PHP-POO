@@ -1,5 +1,5 @@
 <?php
-class FreshItem extends Item {
+ class FreshItem extends Item {
     private $expirationDate;
     public function __construct($name, $price, $weight, $expirationDate){
         parent::__construct($name, $price, $weight);
@@ -9,8 +9,20 @@ class FreshItem extends Item {
         return $this->expirationDate;
     }
 
+    public function getTax(){
+      $price = $this->getPrice();
+      $weight = $this->getWeight();
+      if($this->getExpirationDate() == null){
+        $price = $price * 1.1;
+      } else{
+      if($weight > 1000){
+        $howManyKilo = $weight / 1000;
+        $tax = 1.1 - (0.01 * $howManyKilo);
+        $price = $price * $tax;
+      }
+    }
+  }
     public function showExpirationDate(){
-        //format expiration date YYYY-MM-DD
         $date = $this->expirationDate;
         $date = substr_replace($date, '-', 4, 0);
         $date = substr_replace($date, '-', 7, 0);

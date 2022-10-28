@@ -2,6 +2,7 @@
 require('Item.php');
 require('ShoppingCart.php');
 require('FreshItem.php');
+require('Ticket.php');
 $item = new Item("corn flakes", 500, 5);
 echo '<br>';
 echo $item->getName();

@@ -29,7 +29,10 @@ class Item {
     public function getWeight(){
         return $this->weight;
     }
-
+    
+    public function getTax(){
+        return $price = $this->price * 1.1;
+    }
     public function setPrice($price){
         $this->price = $price;
     }
